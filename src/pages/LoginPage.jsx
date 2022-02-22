@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 
 const LoginPage = () => {
 
+  const auth = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  let navigate = useNavigate()
 
   const handleSubmit = (e) => {
-    axios
-      .post('http://localhost:8000/dj-rest-auth/login/', {
-        username: username,
-        email: '',
-        password: password,
-      })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    auth.login(username, password, navigate);
     e.preventDefault()
   }
 

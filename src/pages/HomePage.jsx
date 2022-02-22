@@ -1,6 +1,14 @@
 import React from 'react';
-import LoginPage from './LoginPage';
+import { Link } from 'react-router-dom';
 
-const HomePage = () => <LoginPage/>
+const HomePage = () => {
+  
+  return (
+    <>
+      <Link to='/'>Home</Link>
+      <Link to='/login'>Login</Link>
+    </>
+  );
+}
 
 export default HomePage;
